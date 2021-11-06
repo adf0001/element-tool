@@ -1,7 +1,7 @@
 ﻿
 // element-tool @ npm, dom element tool.
 
-var ele = require("./lib/ele.js");
+var ele = require("ele-tool");
 
 var eleFromId = function (id) { return document.getElementById(id); }
 
@@ -24,7 +24,7 @@ var sibling = function (el, offset) {
 
 //module
 
-module.exports = exports = ele;		//default ele()
+module.exports = exports = function () { return ele.apply(this, arguments); };		//default ele()
 
 exports.ele = ele;
 exports.eleFromId = eleFromId;

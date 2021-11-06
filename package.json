@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/adf0001/element-tool/issues"
   },
-  "homepage": "https://github.com/adf0001/element-tool#readme"
+  "homepage": "https://github.com/adf0001/element-tool#readme",
+  "dependencies": {
+    "ele-tool": "^1.0.1"
+  }
 }
