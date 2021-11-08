@@ -1,15 +1,19 @@
 ﻿
-// element-tool @ npm, dom element tool.
+// element-tool @ npm, dom element tool, extend module ele-tool.
 
-var ele = require("ele-tool");
+//extend module ele-tool
+module.exports = exports = require("ele-tool");
 
-var eleFromId = function (id) { return document.getElementById(id); }
+//same as document.getElementById()
+exports.fromId = function (id) { return document.getElementById(id); }
 
+//seed for .id()
 var seed = 0;
 
-var eleId = function (el, prefix) {
+//create and set element a new unique id, or return the existed id.
+exports.id = function (el, prefix) {
 	if (el && el.id) return el.id;
-	if (!prefix) prefix = "ht-id-";
+	if (!prefix) prefix = "ele-id-";
 
 	var sid;
 	while (document.getElementById(sid = prefix + (++seed))) { };
@@ -17,16 +21,8 @@ var eleId = function (el, prefix) {
 	return el ? (el.id = sid) : sid;
 }
 
-var sibling = function (el, offset) {
-	var m = el.id.match(/^(\D+)(\d+)$/);
-	return eleFromId(m[1] + (parseInt(m[2]) + offset));
+//return another element by offsetting the tail number of an element id
+exports.offset = function (elOrId, idOffset) {
+	var m = ((typeof elOrId === "string") ? elOrId : (elOrId.id || "")).match(/^(\D+)(\d+)$/);
+	return m && document.getElementById(m[1] + (parseInt(m[2]) + idOffset));
 }
-
-//module
-
-module.exports = exports = function () { return ele.apply(this, arguments); };		//default ele()
-
-exports.ele = ele;
-exports.eleFromId = eleFromId;
-exports.eleId = eleId;
-exports.sibling = sibling;
