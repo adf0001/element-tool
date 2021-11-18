@@ -16,10 +16,6 @@ module.exports = {
 		return ele('divResult2').firstChild.id &&
 			ele.id(document.getElementById('divResult2')) === 'divResult2';
 	},
-	".offset()": function (done) {
-		return ele.offset(ele('divResult2'), 1) === ele('divResult3') &&
-			ele.offset(ele('divResult3'), -1) === ele('divResult2');
-	},
 
 };
 

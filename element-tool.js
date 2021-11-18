@@ -20,9 +20,3 @@ exports.id = function (el, prefix) {
 
 	return el ? (el.id = sid) : sid;
 }
-
-//return another element by offsetting the tail number of an element id
-exports.offset = function (elOrId, idOffset) {
-	var m = ((typeof elOrId === "string") ? elOrId : (elOrId.id || "")).match(/^(\D+)(\d+)$/);
-	return m && document.getElementById(m[1] + (parseInt(m[2]) + idOffset));
-}
