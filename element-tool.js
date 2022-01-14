@@ -1,22 +1,12 @@
 ﻿
 // element-tool @ npm, dom element tool, extend module ele-tool.
 
+var ele_tool = require("ele-tool");
+var ele_id = require("ele-id");
+
 //extend module ele-tool
-module.exports = exports = require("ele-tool");
+module.exports = exports = ele_tool;
 
-//same as document.getElementById()
-exports.fromId = function (id) { return document.getElementById(id); }
-
-//seed for .id()
-var seed = 0;
-
-//create and set element a new unique id, or return the existed id.
-exports.id = function (el, prefix) {
-	if (el && el.id) return el.id;
-	if (!prefix) prefix = "ele-id-";
-
-	var sid;
-	while (document.getElementById(sid = prefix + (++seed))) { };
-
-	return el ? (el.id = sid) : sid;
-}
+exports.id = ele_id;
+exports.eleId = ele_id;
+exports.fromId = ele_id.from;
