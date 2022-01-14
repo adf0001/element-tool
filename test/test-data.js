@@ -1,20 +1,21 @@
-// global, for html page
-ele = require("../element-tool.js");
+
+//global variable, for html page, refer tpsvr @ npm.
+element_tool = require("../element-tool.js");
 
 module.exports = {
 
-	"ele()": function (done) {
-		return ele('divResult') === document.getElementById('divResult') &&
-			ele(document.getElementById('divResult')) === document.getElementById('divResult');
+	"element_tool()": function (done) {
+		return element_tool('divResult') === document.getElementById('divResult') &&
+			element_tool(document.getElementById('divResult')) === document.getElementById('divResult');
 	},
 	".fromId()": function (done) {
-		return ele.fromId('divResult') === document.getElementById('divResult');
+		return element_tool.fromId('divResult') === document.getElementById('divResult');
 	},
 	".id()": function (done) {
-		ele('divResult2').innerHTML = '<span>child</span>';
-		showResult('new id= ' + ele.id(ele('divResult2').firstChild) + ', new id2= ' + ele.id(), 3);
-		return ele('divResult2').firstChild.id &&
-			ele.id(document.getElementById('divResult2')) === 'divResult2';
+		element_tool('divResult2').innerHTML = '<span>child</span>';
+		showResult('new id= ' + element_tool.id(element_tool('divResult2').firstChild) + ', new id2= ' + element_tool.id(), 3);
+		return element_tool('divResult2').firstChild.id &&
+			element_tool.id(document.getElementById('divResult2')) === 'divResult2';
 	},
 
 };
@@ -24,4 +25,4 @@ module.exports = {
 if (typeof showResult !== "function") showResult = function (text) { console.log(text); }
 
 //for mocha
-if (typeof describe === "function") describe('mocha-test', function () { for (var i in module.exports) { it(i, module.exports[i]); } });
+if (typeof describe === "function") describe('element_tool', function () { for (var i in module.exports) { it(i, module.exports[i]).timeout(5000); } });

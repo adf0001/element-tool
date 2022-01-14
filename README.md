@@ -9,18 +9,18 @@ npm install element-tool
 # Usage & Api
 ```javascript
 
-var ele = require("element-tool");
+var element_tool = require("element-tool");
 
 //.ele(idOrEl)		//refer module ele-tool
-ele('divResult') === document.getElementById('divResult') &&
-ele(document.getElementById('divResult')) === document.getElementById('divResult');
+element_tool('divResult') === document.getElementById('divResult') &&
+element_tool(document.getElementById('divResult')) === document.getElementById('divResult');
 
 //.fromId(id)		//same as document.getElementById()
-ele.fromId('divResult') === document.getElementById('divResult');
+element_tool.fromId('divResult') === document.getElementById('divResult');
 
 //.id(el, prefix)		//create and set element a new unique id, or return the existed id.
-ele('divResult2').innerHTML = '<span>child</span>';
-console.log('new id= ' + ele.id(ele('divResult2').firstChild) + ', new id2= ' + ele.id());
-ele.id(document.getElementById('divResult2')) === 'divResult2';
+element_tool('divResult2').innerHTML = '<span>child</span>';
+console.log('new id= ' + element_tool.id(element_tool('divResult2').firstChild) + ', new id2= ' + element_tool.id());
+element_tool.id(document.getElementById('divResult2')) === 'divResult2';
 
 ```

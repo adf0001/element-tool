@@ -1,6 +1,6 @@
 {
   "name": "element-tool",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "dom element tool, extend module ele-tool",
   "main": "element-tool.js",
   "scripts": {
